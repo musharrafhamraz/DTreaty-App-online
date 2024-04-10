@@ -1,0 +1,41 @@
+MDScreen:
+    name: "main"
+    MDFloatLayout:
+        md_bg_color: 1,1,1,1
+        Image:
+            source: 'images/farmer.png'
+            pos_hint: {'center_x': 0.5,'center_y': .75}
+        MDLabel:
+            text: "D T R E A T Y  !"
+            font_name: "Poppins"
+            font_size: "23sp"
+            pos_hint: {"center_y": .48}
+            halign: "center"
+            color: rgba(34, 34, 34, 255)
+        MDLabel:
+            text: "Empowering Farmers, Nurturing Crops: Dtreaty - Your Companion in Crop Health, Detecting Diseases, and Prescribing Vital Treatments for Bountiful Harvests."
+            font_name: "Poppinsl"
+            font_size: "14sp"
+            pos_hint: {"center_y": .36}
+            halign: "center"
+            color: rgba(34, 34, 34, 200)
+        Button:
+            text: "START"
+            size_hint: .66, .065
+            pos_hint: {"center_x": .5, "center_y": .18}
+            background_color: 0,0,0,0
+            font_name:"Poppinsl"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "camera"
+                app.fetch_weather()
+            canvas.before:
+                Color: 
+                    rgb: rgba(52, 0, 231, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [5]
+            
+        
+            

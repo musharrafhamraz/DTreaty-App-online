@@ -1,0 +1,42 @@
+#:import Window kivy.core.window.Window
+MDScreen:
+    name: "camera"
+    MDFloatLayout:
+        md_bg_color: 1,1,1,1
+        MDFloatLayout:
+            Image:
+                source: app.get_weather_image(app.weather_info_desc)  # Call a method to get the appropriate image source dynamically
+                size_hint: None, None
+                size: "70dp", "70dp"
+                pos_hint: {"center_x": 0.5, "top": 0.95}
+            MDLabel:
+                text: app.weather_info
+                font_name: "Poppins"
+                font_size: "18sp"
+                pos_hint: {"center_y": .80}
+                halign: "center"
+                color: rgba(34, 34, 34, 255)
+        MDBoxLayout:
+            Camera:
+                id: camera_id
+                resolution: (640, 480)  # Adjust the resolution as needed
+                play: True
+                size_hint: (1, 1)  # Take the entire available space
+        Button:
+            text: "CAPTURE"
+            size_hint: .66, .065
+            pos_hint: {"center_x": .5, "center_y": .18}
+            background_color: 0, 0, 0, 0
+            font_name: "Poppinsl"
+            on_release: 
+                app.capture_image() # Define a method in your Dtreaty class to handle image capture
+                root.manager.current = "treatment"
+                app.read_data()
+            canvas.before:
+                Color:
+                    rgb: rgba(52, 0, 231, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [5]
+        
